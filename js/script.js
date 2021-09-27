@@ -23,14 +23,42 @@ const quotes = [
 /***
  * `getRandomQuote` function
 ***/
-const getRandomQuote 
+function getRandomQuote() {
+  const randomNumber = Math.floor( Math.random() * quotes.length );
+  return quotes[randomNumber];   
+}
+
+// console.log(getRandomQuote(quotes)); //added to test and debug function
+
+
 
 
 /***
  * `printQuote` function
 ***/
+function printQuote() {
+const randomQuote = getRandomQuote();
+
+let html = '';
+  
+  html = `<p class = "quote">${randomQuote.quote}</p>
+              <p class = "source">${randomQuote.source}`;
+ // check on citation
+  if ( randomQuote['citation'] ) {
+ html += `<span class = "citation">${randomQuote.citation}</span>`;
+}
+
+ // check on year 
+  if ( randomQuote['year'] ) {
+  html += `<span class = "year">${randomQuote.year}</span>`;
+}
+   
+}
+html = `</p>`;
 
 
+// Display Quotes
+document.querySelector('.quote-box').innerHTML = html;
 
 /***
  * click event listener for the print quote button
